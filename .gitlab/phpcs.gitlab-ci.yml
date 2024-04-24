@@ -1,0 +1,14 @@
+phpcs:
+  stage: lint
+  needs:
+    - composer
+  script:
+    - vendor/bin/phpcs
+  # artifacts:
+  #   when: always
+  #   paths:
+  #     - storage/logs/phpstan.json
+  #     - storage/logs/phpstan-junit.xml
+  #   reports:
+  #     codequality: storage/logs/phpstan.json
+  #     junit: storage/logs/phpstan-junit.xml

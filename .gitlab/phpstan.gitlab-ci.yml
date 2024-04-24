@@ -1,5 +1,7 @@
 phpstan:
   stage: lint
+  needs:
+    - composer
   script:
     - vendor/bin/phpstan analyse --memory-limit=4G --error-format gitlab > storage/logs/phpstan.json
     - vendor/bin/phpstan analyse --memory-limit=4G --error-format=junit > storage/logs/phpstan-junit.xml
