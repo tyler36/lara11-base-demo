@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal_core">
+  <description>Default PHP CodeSniffer configuration for Drupal core.</description>
+
+  <!--  Turn colors ON  -->
+  <arg name="colors" />
+
+  <!-- Additional file types -->
+  <arg name="extensions" value="php" />
+  <file>.</file>
+  <exclude-pattern>*/resources/views/*</exclude-pattern>
+
+  <!--Exclude
+  third party code.-->
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/bower_components/*</exclude-pattern>
+  <exclude-pattern>.gitlab-ci-local/*</exclude-pattern>
+
+  <!-- Exclude DDEV files -->
+  <exclude-pattern>.ddev/*</exclude-pattern>
+  <!-- Logs -->
+  <exclude-pattern>storage/*</exclude-pattern>
+
+  <rule ref="SlevomatCodingStandard.Classes.ClassStructure.IncorrectGroupOrder">
+    <exclude-pattern>*Test.php</exclude-pattern>
+  </rule>
+  <rule ref="SlevomatCodingStandard.Classes.PropertySpacing.IncorrectCountOfBlankLinesAfterProperty"></rule>
+  <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses.IncorrectlyOrderedUses"></rule>
+  <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"></rule>
+  <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"></rule>
+</ruleset>
