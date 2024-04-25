@@ -21,3 +21,16 @@ jobs:
           REQUIRE_DEV: true
         with:
           args: analyse
+
+
+  phpcs:
+    name: "🧹 PHPCS"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v2
+
+      - name: "🧹 Run PHPCS"
+        uses: chekalsky/phpcs-action@v1
+        # with:
+        #   enable_warnings: true
