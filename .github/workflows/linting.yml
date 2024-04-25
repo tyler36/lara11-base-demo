@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   phpstan:
     name: "🧹 PHPSTAN"
@@ -22,15 +26,29 @@ jobs:
         with:
           args: analyse
 
-
   phpcs:
     name: "🧹 PHPCS"
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: "🧹 Run PHPCS"
-        uses: chekalsky/phpcs-action@v1
-        # with:
-        #   enable_warnings: true
+      - name: "📦 Cache Composer dependencies"
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          dev: yes
+          php_version: 8.2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: PHP Code Sniffer
+        run: vendor/bin/phpcs
