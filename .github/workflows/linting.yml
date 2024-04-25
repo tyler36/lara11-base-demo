@@ -28,6 +28,8 @@ jobs:
 
   phpcs:
     name: "🧹 PHPCS"
+    env:
+      GH_TOKEN: ${{ github.token }}
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
@@ -45,10 +47,8 @@ jobs:
           dev: yes
           php_version: 8.2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: tinovyatkin/action-php-codesniffer@v1
         with:
-          php-version: '8.2'
-
-      - name: PHP Code Sniffer
-        run: vendor/bin/phpcs
+          files: "**.php" # you may customize glob as needed
+          phpcs_path: php phpcs.phar
+          standard: phpcs.xml
