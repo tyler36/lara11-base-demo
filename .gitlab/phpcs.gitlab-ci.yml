@@ -4,9 +4,11 @@ phpcs:
     - composer
   script:
     - vendor/bin/phpcs --report=junit > ./storage/logs/phpcs-junit.xml
+    - vendor/bin/phpcs --report=json > ./storage/logs/phpcs.json
   artifacts:
     when: always
     paths:
       - storage/logs
     reports:
+      codequality: storage/logs/phpcs.json
       junit: storage/logs/phpcs-junit.xml
