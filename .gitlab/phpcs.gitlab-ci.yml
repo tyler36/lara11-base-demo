@@ -3,12 +3,10 @@ phpcs:
   needs:
     - composer
   script:
-    - vendor/bin/phpcs
-  # artifacts:
-  #   when: always
-  #   paths:
-  #     - storage/logs/phpstan.json
-  #     - storage/logs/phpstan-junit.xml
-  #   reports:
-  #     codequality: storage/logs/phpstan.json
-  #     junit: storage/logs/phpstan-junit.xml
+    - vendor/bin/phpcs --report=junit > ./storage/logs/phpcs-junit.xml
+  artifacts:
+    when: always
+    paths:
+      - storage/logs
+    reports:
+      junit: storage/logs/phpcs-junit.xml
