@@ -1,0 +1,14 @@
+name: gitpod-setup
+repository: https://github.com/tyler36/ddev-gitpod-setup/tarball/Use-latest-tag-for-Gitpod
+version: ""
+install_date: "2024-10-18T10:37:14+09:00"
+project_files:
+    - gitpod-setup/
+global_files: []
+removal_actions:
+    - |
+      if grep -q '#ddev-generated' ${DDEV_APPROOT}/.gitpod.yml; then
+        rm -f ${DDEV_APPROOT}/.gitpod.yml
+      else
+        echo "Unwilling to remove '${DDEV_APPROOT}/.gitpod.yml' because it does not have #ddev-generated in it; you can manually delete it if it is safe to delete."
+      fi

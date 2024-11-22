@@ -1,20 +1,3 @@
-##ddev-generated
-## -------------------------
-## Define how Gitpod prepares and builds your project and how it can start the project’s development server(s).
-## @see https://www.gitpod.io/docs/references/gitpod-yml#tasks
-tasks:
-  - init: |
-      # Upgrade DDEV to current stable version
-      sudo apt update >/dev/null 2>&1 && sudo apt -qq -y install ddev
-      ddev start -y
-      ddev composer install
-      ddev npm install
-      ddev artisan key:generate
-    command: |
-      # Upgrade DDEV to current stable version
-      sudo apt update >/dev/null 2>&1 && sudo apt -qq -y install ddev
-      ddev start -y
-      gp ports await 8080 && gp preview $(gp url 8080)
 
 ##ddev-generated
 image: ddev/ddev-gitpod-base:latest
