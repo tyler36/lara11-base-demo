@@ -1,7 +1,7 @@
 name: gitpod-setup
-repository: https://github.com/tyler36/ddev-gitpod-setup/tarball/Use-latest-tag-for-Gitpod
+repository: /home/user13/code/packages/ddev-gitpod-setup
 version: ""
-install_date: "2024-10-18T10:37:14+09:00"
+install_date: "2024-11-22T12:06:22+09:00"
 project_files:
     - gitpod-setup/
 global_files: []
