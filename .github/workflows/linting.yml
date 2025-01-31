@@ -24,12 +24,12 @@ jobs:
           persist-credentials: false
 
       - name: "🧹 PHP-CS-Fixer"
-        uses: docker://oskarstark/php-cs-fixer-ga:^3
+        uses: docker://oskarstark/php-cs-fixer-ga:3.26.0
         with:
           args: --config=.php-cs-fixer.dist.php
 
       - name: "🧹 PHPStan Static Analysis"
-        uses: docker://oskarstark/phpstan-ga:^1
+        uses: docker://oskarstark/phpstan-ga
         env:
           REQUIRE_DEV: true
         with:
